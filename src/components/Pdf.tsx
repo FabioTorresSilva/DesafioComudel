@@ -3,8 +3,9 @@ import { Page, Document, Image, StyleSheet } from '@react-pdf/renderer';
 import InvoiceTitle from './InvoiceTitle'
 import InvoiceNo from './InvoiceNo'
 import InvoiceItemsTable from './InvoiceItemsTable'
-import InvoiceThankYouMsg from './InvoiceThankYouMsg'
+
 import logo from "../../public/olisipo.png"
+import InvoiceDescription from './InvoiceDescription';
 
 
 const styles = StyleSheet.create({
@@ -25,7 +26,7 @@ const styles = StyleSheet.create({
   }
 });
 
-const Pdf = ({ formData,  totalValue}) => {
+const Pdf = ({ formData,  totalValue, invoiceNumber, currentDate}) => {
   const logoUrl = 'https://static-media.fluxio.cloud/olisipoway/_icon/share-b2a65c5bedbb26af91c68cece307864c.png'; // Substitua com o link direto para sua imagem
 
   return (
@@ -33,9 +34,9 @@ const Pdf = ({ formData,  totalValue}) => {
     <Page size="A4" style={styles.page}>
         <Image alt="logo" style={styles.logo} src={logoUrl} />
         <InvoiceTitle title="Fatura"/>
-        <InvoiceNo formData={formData}/>
+        <InvoiceNo invoiceNumber={invoiceNumber} currentDate={currentDate} />
         <InvoiceItemsTable formData={formData} totalValue={totalValue} />
-        <InvoiceThankYouMsg />
+        <InvoiceDescription formData={formData} />
     </Page>
 </Document>
   );

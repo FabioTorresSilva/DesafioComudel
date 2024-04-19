@@ -22,15 +22,15 @@ const styles = StyleSheet.create({
   });
 
 
-  const InvoiceNo = ({formData}) => (
+  const InvoiceNo = ({invoiceNumber, currentDate}) => (
         <Fragment>
             <View style={styles.invoiceNoContainer}>
                 <Text style={styles.label}>Fatura nº:</Text>
-                <Text style={styles.invoiceDate}>{formData.invoice}</Text>
+                <Text style={styles.invoiceDate}>{invoiceNumber}</Text>
             </View >
             <View style={styles.invoiceDateContainer}>
                 <Text style={styles.label}>Data: </Text>
-                <Text >{formData.data}</Text>
+                <Text >{currentDate}</Text>
             </View >
         </Fragment>
   );

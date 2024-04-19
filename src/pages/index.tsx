@@ -3,13 +3,12 @@ import { z } from "zod";
 import { useRouter } from "next/router";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 import Pdf from "@/components/Pdf";
+import PdfPreview from "./pdfPreview";
 
 // ZOD SCHEMA, verificacao por parte do front-end
 const invoiceSchema = z.object({
   company: z.string(),
   vat: z.string().length(9), //Vat/NIF geralmente tem 9 digitos
-  invoice: z.number(),
-  date: z.string(),
   products: z.array(
     z.object({
       name: z.string(),
@@ -22,14 +21,13 @@ const invoiceSchema = z.object({
 
 export default function Home() {
   const router = useRouter();
+  const [previewPdf, setPreviewPdf] = useState(false);
   const [isValid, setisValid] = useState(false);
   const [formData, setFormData] = useState({
     company: "",
     vat: "",
     products: [{ name: "", quantity: "", price: "" }],
     description: "",
-    date: "",
-    invoice: "",
   });
   const [totalValue, setTotalValue] = useState(0);
   const [validationError, setValidationError] = useState("");
@@ -74,40 +72,28 @@ export default function Home() {
     }
   };
 
+  const invoiceNumber = Math.floor(100000 + Math.random() * 900000);
+  const currentDate = new Date().toISOString().split("T")[0];
   // Function to handle form submission
 
   // Function to handle form submission
+  // Function to handle form submission
   const handleSubmit = () => {
     try {
-      const invoiceNumber = Math.floor(100000 + Math.random() * 900000);
-      const currentDate = new Date().toISOString().split("T")[0];
-      // Convert vat and purchaseValue to numbers before validation
+     
       const formattedData = {
         ...formData,
-        invoice: invoiceNumber,
-        date: currentDate,
         products: formData.products.map((product) => ({
           ...product,
           quantity: parseFloat(product.quantity),
           price: parseFloat(product.price),
         })),
       };
-  
-      // Validate the form data against the schema
+
       invoiceSchema.parse(formattedData);
-      console.log(formattedData.date);
-      console.log(formattedData.invoice);
-      // If validation succeeds, clear any previous validation errors
       setValidationError("");
-      const pdfContent = (
-        <Pdf formData={formattedData} totalValue={totalValue} />
-      );
-      // Call the PDF download function here
       setisValid(true);
-      console.log("Formulário Enviado");
-      // Perform further actions, such as sending data to the backend
     } catch (error: any) {
-      // If validation fails, display the validation error
       setValidationError(error.message);
       console.error("Formulário Inválido");
     }
@@ -154,6 +140,10 @@ export default function Home() {
   // Function to handle navigation to the history page
   const handleViewHistory = () => {
     router.push("/historico");
+  };
+
+  const handlePreviewClick = () => {
+    setPreviewPdf(true);
   };
 
   return (
@@ -237,7 +227,8 @@ export default function Home() {
             <button onClick={handleSubmit}>Validar</button>
             {isValid && (
               <PDFDownloadLink
-                document={<Pdf formData={formData} totalValue={totalValue} />}
+                document={<Pdf formData={formData} totalValue={totalValue} invoiceNumber={invoiceNumber}
+                currentDate={currentDate}  />}
                 fileName="invoice.pdf"
               >
                 {({ loading }) =>
@@ -248,10 +239,21 @@ export default function Home() {
                   )
                 }
               </PDFDownloadLink>
-            )}
+            ) }
+            {/* teria que ser com modal. Assim nao ficava bem */}
+              {/* <button onClick={handlePreviewClick}>Pré-visualizar</button>
+                {previewPdf && (
+                  <PdfPreview
+                    formData={formData}
+                    totalValue={totalValue}
+                    invoiceNumber={invoiceNumber}
+                    currentDate={currentDate}
+                  />
+                )} */}
+            
             {validationError && (
               <p className="text-red-500 justify-center flex ">
-                Erro {validationError}
+                Erro 
               </p>
             )}
           </div>

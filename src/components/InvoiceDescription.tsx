@@ -16,10 +16,10 @@ const styles = StyleSheet.create({
   });
 
 
-  const InvoiceThankYouMsg = () => (
+  const InvoiceDescription = ({formData}) => (
     <View style={styles.titleContainer}>
-        <Text style={styles.reportTitle}>Obrigado por escolheres a OlisipoWay.</Text>
+        <Text style={styles.reportTitle}>{formData.description}Obrigado por escolheres a OlisipoWay.</Text>
     </View>
   );
   
-  export default InvoiceThankYouMsg
+  export default InvoiceDescription
