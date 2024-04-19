@@ -15,22 +15,39 @@ const styles = StyleSheet.create({
             fontSize: 12,
             fontStyle: 'bold',
     },
-    label: {
-        width: 60
+    niflabel:{
+        width: 23
+    },
+    companylabel:{
+        width: 50
+    },
+    invoicelabel:{
+        width:50
+    },
+    datelabel:{
+        width: 30
     }
     
   });
 
 
-  const InvoiceNo = ({invoiceNumber, currentDate}) => (
+  const InvoiceNo = ({invoiceNumber, currentDate , formData}) => (
         <Fragment>
             <View style={styles.invoiceNoContainer}>
-                <Text style={styles.label}>Fatura nº:</Text>
+                <Text style={styles.invoicelabel}>Fatura nº:</Text>
                 <Text style={styles.invoiceDate}>{invoiceNumber}</Text>
             </View >
             <View style={styles.invoiceDateContainer}>
-                <Text style={styles.label}>Data: </Text>
+                <Text style={styles.datelabel}>Data: </Text>
                 <Text >{currentDate}</Text>
+            </View >
+            <View style={styles.invoiceDateContainer}>
+                <Text style={styles.companylabel}>Empresa:</Text>
+                <Text style={styles.invoiceDate}>{formData.company}</Text>
+            </View >
+            <View style={styles.invoiceDateContainer}>
+                <Text style={styles.niflabel}>NIF:</Text>
+                <Text style={styles.invoiceDate}>{formData.vat}</Text>
             </View >
         </Fragment>
   );

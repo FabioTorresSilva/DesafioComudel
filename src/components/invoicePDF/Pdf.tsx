@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
       flexDirection: 'column',
   }, 
   logo: {
-      width: 120,
+      width: 160,
       height: 66,
       marginLeft: 'auto',
       marginRight: 'auto'
@@ -34,7 +34,7 @@ const Pdf = ({ formData,  totalValue, invoiceNumber, currentDate}) => {
     <Page size="A4" style={styles.page}>
         <Image alt="logo" style={styles.logo} src={logoUrl} />
         <InvoiceTitle title="Fatura"/>
-        <InvoiceNo invoiceNumber={invoiceNumber} currentDate={currentDate} />
+        <InvoiceNo invoiceNumber={invoiceNumber} currentDate={currentDate} formData={formData} />
         <InvoiceItemsTable formData={formData} totalValue={totalValue} />
         <InvoiceDescription formData={formData} />
     </Page>
