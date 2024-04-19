@@ -1,74 +1,43 @@
-import React from "react";
-import { Document, Page, Text, View, StyleSheet } from "@react-pdf/renderer";
-import { createTw } from "react-pdf-tailwind";
+import React from 'react';
+import { Page, Document, Image, StyleSheet } from '@react-pdf/renderer';
+import InvoiceTitle from './InvoiceTitle'
+import InvoiceNo from './InvoiceNo'
+import InvoiceItemsTable from './InvoiceItemsTable'
+import InvoiceThankYouMsg from './InvoiceThankYouMsg'
+import logo from "../../public/olisipo.png"
 
-const tw = createTw({
-  theme: {
-    extend: {
-      colors: {
-        custom: "cornflowerblue",
-      },
-    },
-  },
+
+const styles = StyleSheet.create({
+  page: {
+      fontFamily: 'Helvetica',
+      fontSize: 11,
+      paddingTop: 30,
+      paddingLeft:60,
+      paddingRight:60,
+      lineHeight: 1.5,
+      flexDirection: 'column',
+  }, 
+  logo: {
+      width: 120,
+      height: 66,
+      marginLeft: 'auto',
+      marginRight: 'auto'
+  }
 });
 
-const Pdf = ({
-  formData = {
-    company: "Default Company",
-    vat: "Default VAT",
-    date: "13/04",
-    invoice: 1213123,
-    products: [
-      { name: "Product 1", quantity: 1, price: 10 },
-      { name: "Product 2", quantity: 2, price: 20 },
-    ],
-    description: "Default Description",
-  },
-  totalValue = 50,
-}) => {
+const Pdf = ({ formData,  totalValue}) => {
+  const logoUrl = 'https://static-media.fluxio.cloud/olisipoway/_icon/share-b2a65c5bedbb26af91c68cece307864c.png'; // Substitua com o link direto para sua imagem
+
   return (
     <Document>
-      <Page
-        style={tw("p-10 flex flex-col gap-4 justify-center w-full")}
-      >
-        <View style={tw("flex flex-col justify-center ")}>
-          <Text style={tw("text-bold text-2xl ")}>
-            Fatura nº {formData.invoice}
-          </Text>
-          <Text style={tw("pb-10")}>Data: {formData.date}</Text>
-          <Text style={tw("flex flex-col text-right ")}>
-            <Text style={tw("flex-end text-blue-900")}>{formData.company}</Text>
-            <Text style={tw("flex-end pb-20 ")}>NIF: {formData.vat}</Text>
-          </Text>
-
-          <Text style={tw("border ")}>
-            <Text
-              style={tw(
-                "border-b-2 py-2 border-black flex flex-row justify-between px-2 gap-40 text-right "
-              )}
-            >
-              <Text>Quantidade</Text>
-              <Text>Produtos</Text>
-              <Text>Preço</Text>
-            </Text>
-            {formData.products.map((product, index) => (
-              <View key={index} style={tw("mt-2 px-4 flex flex-col")}>
-                <Text style={tw("text-bold  flex justify-between ")}>
-                  <Text>{product.quantity}</Text>
-                  <Text>{product.name}</Text>
-                  <Text>{product.price}</Text>
-                </Text>
-              </View>
-            ))}
-          </Text>
-          <Text style={tw("pb-40 text-right text-blue font-bold  ")}>
-            Total: {totalValue}
-          </Text >
-          <Text style={tw(" py-2 border-b-2 border-black ")}>Descrição:</Text>
-          <Text >{formData.description}</Text>
-        </View>
-      </Page>
-    </Document>
+    <Page size="A4" style={styles.page}>
+        <Image alt="logo" style={styles.logo} src={logoUrl} />
+        <InvoiceTitle title="Fatura"/>
+        <InvoiceNo formData={formData}/>
+        <InvoiceItemsTable formData={formData} totalValue={totalValue} />
+        <InvoiceThankYouMsg />
+    </Page>
+</Document>
   );
 };
 

@@ -29,7 +29,7 @@ export default function Home() {
     products: [{ name: "", quantity: "", price: "" }],
     description: "",
     date: "",
-    invoice: 0,
+    invoice: "",
   });
   const [totalValue, setTotalValue] = useState(0);
   const [validationError, setValidationError] = useState("");
@@ -85,16 +85,18 @@ export default function Home() {
       const formattedData = {
         ...formData,
         invoice: invoiceNumber,
-        data:currentDate,
+        date: currentDate,
         products: formData.products.map((product) => ({
           ...product,
           quantity: parseFloat(product.quantity),
           price: parseFloat(product.price),
         })),
       };
-
+  
       // Validate the form data against the schema
       invoiceSchema.parse(formattedData);
+      console.log(formattedData.date);
+      console.log(formattedData.invoice);
       // If validation succeeds, clear any previous validation errors
       setValidationError("");
       const pdfContent = (
