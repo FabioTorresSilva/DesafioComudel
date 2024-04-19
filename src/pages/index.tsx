@@ -4,11 +4,12 @@ import { useRouter } from "next/router";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 import Pdf from "@/components/Pdf";
 
-
 // ZOD SCHEMA, verificacao por parte do front-end
 const invoiceSchema = z.object({
   company: z.string(),
   vat: z.string().length(9), //Vat/NIF geralmente tem 9 digitos
+  invoice: z.number(),
+  date: z.string(),
   products: z.array(
     z.object({
       name: z.string(),
@@ -19,8 +20,6 @@ const invoiceSchema = z.object({
   description: z.string(),
 });
 
-
-
 export default function Home() {
   const router = useRouter();
   const [isValid, setisValid] = useState(false);
@@ -29,6 +28,8 @@ export default function Home() {
     vat: "",
     products: [{ name: "", quantity: "", price: "" }],
     description: "",
+    date: "",
+    invoice: 0,
   });
   const [totalValue, setTotalValue] = useState(0);
   const [validationError, setValidationError] = useState("");
@@ -78,9 +79,13 @@ export default function Home() {
   // Function to handle form submission
   const handleSubmit = () => {
     try {
+      const invoiceNumber = Math.floor(100000 + Math.random() * 900000);
+      const currentDate = new Date().toISOString().split("T")[0];
       // Convert vat and purchaseValue to numbers before validation
       const formattedData = {
         ...formData,
+        invoice: invoiceNumber,
+        data:currentDate,
         products: formData.products.map((product) => ({
           ...product,
           quantity: parseFloat(product.quantity),
@@ -96,7 +101,7 @@ export default function Home() {
         <Pdf formData={formattedData} totalValue={totalValue} />
       );
       // Call the PDF download function here
-      setisValid(true)
+      setisValid(true);
       console.log("Formulário Enviado");
       // Perform further actions, such as sending data to the backend
     } catch (error: any) {
@@ -229,22 +234,22 @@ export default function Home() {
             />
             <button onClick={handleSubmit}>Validar</button>
             {isValid && (
-            <PDFDownloadLink
-              document={<Pdf formData={formData} totalValue={totalValue} />}
-              fileName="invoice.pdf"
-            >
-              {({ loading }) =>
-                loading ? (
-                  <button>Gerando PDF...</button>
-                ) : (
-                  <button>Download PDF</button>
-                )
-              }
-            </PDFDownloadLink>
+              <PDFDownloadLink
+                document={<Pdf formData={formData} totalValue={totalValue} />}
+                fileName="invoice.pdf"
+              >
+                {({ loading }) =>
+                  loading ? (
+                    <button>Gerando PDF...</button>
+                  ) : (
+                    <button>Download PDF</button>
+                  )
+                }
+              </PDFDownloadLink>
             )}
             {validationError && (
               <p className="text-red-500 justify-center flex ">
-                Erro 
+                Erro {validationError}
               </p>
             )}
           </div>
