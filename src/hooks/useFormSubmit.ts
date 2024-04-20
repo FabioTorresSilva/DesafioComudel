@@ -1,6 +1,3 @@
-import { IFormData } from "@/types/type";
-import React, { useEffect, useState } from "react";
-
 const DEFAULT_VALUE = { name: "", quantity: "", price: "" };
 
 export const useFormSubmit = (

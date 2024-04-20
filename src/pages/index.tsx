@@ -3,7 +3,7 @@ import { z } from "zod";
 import { useRouter } from "next/router";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 import Pdf from "@/components/invoicePDF/Pdf";
-import { calculateTotalValue } from "@/hooks/calculateTotalValue";
+import { usecalculateTotalValue } from "@/hooks/calculateTotalValue";
 import { useFormSubmit } from "@/hooks/useFormSubmit";
 import ProductInput from "@/components/gerarFatura/ProductInput";
 import CompanyInput from "@/components/gerarFatura/CompanyInput";
@@ -35,7 +35,7 @@ export default function Home() {
   const [validationError, setValidationError] = useState("");
   const [invoiceNumber, setInvoiceNumber] = useState(generateInvoiceNumber()); // Inicialização com o valor gerado
   const [invoiceDate, setInvoiceDate] = useState(generateCurrentDate());
-  const { totalValue, setTotalValue } = calculateTotalValue(formData);
+  const { totalValue, setTotalValue } = usecalculateTotalValue(formData);
 
   const {
     handleSubmit,
