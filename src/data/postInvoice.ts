@@ -2,7 +2,7 @@ const { getMongoCollection } = require("../data/mongodb");
 
 const collectionName = "comudel";
 
-export async function inserirInvoiceDataBase(
+export async function insertInvoiceDataBase(
   company,
   vat,
   products,

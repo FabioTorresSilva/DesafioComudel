@@ -10,11 +10,11 @@ export const useFormSubmit = (
   invoiceDate,
   totalValue 
 ) => {
+
   const handleSubmit = async (e: any) => {
-    e.preventDefault(); // Impede o comportamento padrão de envio do formulário
+    e.preventDefault();
 
     try {
-      // Aqui você inclui o invoiceNumber e invoiceDate nos dados enviados para a API
       const formattedData = {
         ...formData,
         invoiceNumber: invoiceNumber,
@@ -26,11 +26,9 @@ export const useFormSubmit = (
         })),
         totalValue
       };
-  
-      // Valide os dados formatados em relação ao esquema
+
       invoiceSchema.parse(formattedData);
   
-      // Tente enviar os dados formatados para o endpoint da API
       const response = await fetch("/api/postarInvoice", {
         method: "POST",
         headers: {
@@ -45,7 +43,7 @@ export const useFormSubmit = (
         setValidationError("");
         setisValid(true);
       } else {
-        console.error("Erro ao criar receita");
+        console.error("Erro ao criar Invoice");
       }
     } catch (error) {
       // Manipula erros de validação ou de envio da API

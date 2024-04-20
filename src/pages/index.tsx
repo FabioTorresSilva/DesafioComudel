@@ -3,7 +3,7 @@ import { z } from "zod";
 import { useRouter } from "next/router";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 import Pdf from "@/components/invoicePDF/Pdf";
-import { usecalculateTotalValue } from "@/hooks/calculateTotalValue";
+import { calculateTotalValue } from "@/hooks/calculateTotalValue";
 import { useFormSubmit } from "@/hooks/useFormSubmit";
 import ProductInput from "@/components/gerarFatura/ProductInput";
 import CompanyInput from "@/components/gerarFatura/CompanyInput";
@@ -12,7 +12,7 @@ import { generateCurrentDate, generateInvoiceNumber } from "@/utils/utils";
 // ZOD SCHEMA, verificacao por parte do front-end
 const invoiceSchema = z.object({
   company: z.string(),
-  vat: z.string().length(9), //NIF 9 digitos
+  vat: z.string().length(9), //NIF 9 digits
   products: z.array(
     z.object({
       name: z.string(),
@@ -33,30 +33,29 @@ export default function Home() {
     description: "",
   });
   const [validationError, setValidationError] = useState("");
-  const [invoiceNumber, setInvoiceNumber] = useState(generateInvoiceNumber()); // Inicialização com o valor gerado
+  const [invoiceNumber, setInvoiceNumber] = useState(generateInvoiceNumber());
   const [invoiceDate, setInvoiceDate] = useState(generateCurrentDate());
-  const { totalValue, setTotalValue } = usecalculateTotalValue(formData);
+  const { totalValue, setTotalValue } = calculateTotalValue(formData);
 
   const {
     handleSubmit,
     handleInputChange,
     handleProductChange,
     removeProductField,
-    addProductField
+    addProductField,
   } = useFormSubmit(
     formData,
     setFormData,
     invoiceSchema,
     setValidationError,
     setisValid,
-    invoiceNumber, 
+    invoiceNumber,
     invoiceDate,
-    totalValue 
+    totalValue
   );
 
-  // Function to handle navigation to the history page
   const handleViewHistory = () => {
-    router.push("/historico"); 
+    router.push("/historico");
   };
 
   return (
@@ -66,7 +65,7 @@ export default function Home() {
           <h1 className="text-2xl font-bold text-gray-800">Gerar Fatura</h1>
           <button
             onClick={handleViewHistory}
-            className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700 transition duration-300"
+            className="px-4 py-2 bg-blue-500 hover:bg-blue-700 text-white rounded-xl  transition duration-500 ease-in-out transform hover:-translate-y-1"
           >
             Histórico Faturas
           </button>
@@ -86,7 +85,7 @@ export default function Home() {
             <button
               type="button"
               onClick={addProductField}
-              className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700 transition duration-300"
+              className="px-4 py-2 bg-blue-500 hover:bg-blue-700 text-white rounded-xl  transition duration-500 ease-in-out transform hover:-translate-y-1"
             >
               + Produto
             </button>
@@ -105,7 +104,7 @@ export default function Home() {
           <div className="flex justify-center">
             <button
               type="submit"
-              className="px-6 py-2 bg-blue-500 text-white rounded hover:bg-blue-700 transition duration-300"
+              className="px-4 py-2 bg-blue-500 hover:bg-blue-700 text-white rounded-xl  transition duration-500 ease-in-out transform hover:-translate-y-1"
             >
               Validar Fatura
             </button>
@@ -124,13 +123,11 @@ export default function Home() {
             fileName={`invoice-${formData.company}.pdf`}
             className="text-blue-600 hover:underline flex justify-center mt-4"
           >
-            {({ loading }) => (loading ? "A Gerar Pdf..." : "Download PDF")}
+            {({ loading }) => (loading ? "A Gerar Pdf..." : "Download PDF.")}
           </PDFDownloadLink>
         )}
         {validationError && (
-          <p className="text-red-500 text-center mt-4">
-            Erro ao Validar.
-          </p>
+          <p className="text-red-500 text-center mt-4">Erro ao Validar.</p>
         )}
       </div>
     </main>

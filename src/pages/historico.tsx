@@ -17,7 +17,6 @@ export default function Historico() {
         throw new Error("Error Loading Invoices");
       }
       const data = await response.json();
-      // Armazena a resposta da requisição
       const sortedInvoices = sortInvoices(data);
       setInvoices(sortedInvoices);
       console.log("wqeqweqwe",sortedInvoices)
@@ -27,7 +26,6 @@ export default function Historico() {
   };
 
   const sortInvoices = (data) => {
-    // Classifica as faturas com base na data da fatura (invoiceDate)
     data.sort((a, b) => new Date(b.invoiceDate) - new Date(a.invoiceDate));
     return data;
   };
