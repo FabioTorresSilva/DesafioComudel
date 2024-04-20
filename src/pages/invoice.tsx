@@ -1,7 +1,7 @@
 import React from "react";
-import PdfPreview from "./pdfPreview";
+import PdfPreview from "../components/invoicePDF/pdfPreview";
 
-const InvoicePage = ({ formData, totalValue, invoiceNumber, currentDate }) => {
+const InvoicePage = ({ formData, totalValue, invoiceNumber, invoiceDate }) => {
   return (
     <div>
       {/* Renderiza o componente PdfPreview com os dados da fatura */}
@@ -9,13 +9,14 @@ const InvoicePage = ({ formData, totalValue, invoiceNumber, currentDate }) => {
         formData={formData}
         totalValue={totalValue}
         invoiceNumber={invoiceNumber}
-        currentDate={currentDate}
+        invoiceDate={invoiceDate}
       />
     </div>
   );
 };
 
 // Função para buscar os parâmetros da URL e passá-los para o componente PdfPreview
+//Ter atencao
 export async function getServerSideProps({ query }) {
   // Extrai os parâmetros da query
   const {
@@ -25,14 +26,14 @@ export async function getServerSideProps({ query }) {
     description,
     totalValue,
     invoiceNumber,
-    currentDate,
+    invoiceDate,
   } = query;
 
   // Converte a string JSON dos produtos de volta para um array
   const parsedProducts = JSON.parse(products);
 
-  // Verifica se currentDate é definido, caso contrário, define como null
-  const parsedCurrentDate = currentDate ? currentDate : null;
+  // Verifica se invoiceDate é definido, caso contrário, define como null
+  const parsedCurrentDate = invoiceDate ? invoiceDate : null;
 
   // Verifica se invoiceNumber é definido, caso contrário, define como null
   const parsedInvoiceNumber = invoiceNumber ? invoiceNumber : null;
@@ -48,7 +49,7 @@ export async function getServerSideProps({ query }) {
       },
       totalValue: parseFloat(totalValue),
       invoiceNumber: parsedInvoiceNumber,
-      currentDate: parsedCurrentDate,
+      invoiceDate: parsedCurrentDate,
     },
   };
 }

@@ -1,9 +1,24 @@
 const { getMongoCollection } = require("../data/mongodb");
 
-const collectionName = "comudel"
+const collectionName = "comudel";
 
-export async function inserirInvoiceDataBase(company,vat,products,description , totalValue ) {
-    const collection = await getMongoCollection(collectionName);
-    await collection.insertOne({company,vat,products,description, totalValue });
+export async function inserirInvoiceDataBase(
+  company,
+  vat,
+  products,
+  description,
+  totalValue,
+  invoiceNumber,
+  invoiceDate
+) {
+  const collection = await getMongoCollection(collectionName);
+  await collection.insertOne({
+    company,
+    vat,
+    products,
+    description,
+    totalValue,
+    invoiceNumber,
+    invoiceDate,
+  });
 }
-

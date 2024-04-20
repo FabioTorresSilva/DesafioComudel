@@ -26,15 +26,14 @@ const styles = StyleSheet.create({
   }
 });
 
-const Pdf = ({ formData,  totalValue, invoiceNumber, currentDate}) => {
+const Pdf = ({ formData,  totalValue, invoiceNumber, invoiceDate}) => {
   const logoUrl = 'https://static-media.fluxio.cloud/olisipoway/_icon/share-b2a65c5bedbb26af91c68cece307864c.png';
-
   return (
     <Document>
     <Page size="A4" style={styles.page}>
         <Image alt="logo" style={styles.logo} src={logoUrl} />
         <InvoiceTitle title="Fatura"/>
-        <InvoiceNo invoiceNumber={invoiceNumber} currentDate={currentDate} formData={formData} />
+        <InvoiceNo invoiceNumber={invoiceNumber} invoiceDate={invoiceDate} formData={formData} />
         <InvoiceItemsTable formData={formData} totalValue={totalValue} />
         <InvoiceDescription formData={formData} />
     </Page>

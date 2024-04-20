@@ -1,14 +1,13 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { z } from "zod";
 import { useRouter } from "next/router";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 import Pdf from "@/components/invoicePDF/Pdf";
-import PdfPreview from "./pdfPreview";
 import { calculateTotalValue } from "@/hooks/calculateTotalValue";
-import { generateCurrentDate, generateInvoiceNumber } from "@/utils/utils";
 import { useFormSubmit } from "@/hooks/useFormSubmit";
 import ProductInput from "@/components/gerarFatura/ProductInput";
 import CompanyInput from "@/components/gerarFatura/CompanyInput";
+import { generateCurrentDate, generateInvoiceNumber } from "@/utils/utils";
 
 // ZOD SCHEMA, verificacao por parte do front-end
 const invoiceSchema = z.object({
@@ -33,37 +32,38 @@ export default function Home() {
     products: [{ name: "", quantity: "", price: "" }],
     description: "",
   });
-  const [invoiceNumber, setInvoiceNumber] = useState("");
-  const [currentDate, setCurrentDate] = useState("");
   const [validationError, setValidationError] = useState("");
-
+  const [invoiceNumber, setInvoiceNumber] = useState(generateInvoiceNumber()); // Inicialização com o valor gerado
+  const [invoiceDate, setInvoiceDate] = useState(generateCurrentDate());
   const { totalValue, setTotalValue } = calculateTotalValue(formData);
-  const { handleSubmit, handleInputChange, handleProductChange } =
-    useFormSubmit(
-      formData,
-      setFormData,
-      invoiceSchema,
-      setValidationError,
-      setisValid
-    );
-  const { removeProductField, addProductField } = useFormSubmit(
+
+  const {
+    handleSubmit,
+    handleInputChange,
+    handleProductChange,
+    removeProductField,
+    addProductField
+  } = useFormSubmit(
     formData,
     setFormData,
     invoiceSchema,
     setValidationError,
-    setisValid
+    setisValid,
+    invoiceNumber, 
+    invoiceDate,
+    totalValue 
   );
 
   // Function to handle navigation to the history page
   const handleViewHistory = () => {
-    router.push("/historico");
+    router.push("/historico"); 
   };
 
   return (
-    <main className="min-h-screen bg-blue-200 flex justify-center items-center p-6">
+    <main className="min-h-screen bg-gray-200 flex justify-center items-center p-6">
       <div className="w-full max-w-4xl bg-white rounded-lg shadow-lg p-8">
         <div className="mb-8 flex justify-between">
-          <h1 className="text-xl font-bold text-gray-800">Gerar Fatura</h1>
+          <h1 className="text-2xl font-bold text-gray-800">Gerar Fatura</h1>
           <button
             onClick={handleViewHistory}
             className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700 transition duration-300"
@@ -117,8 +117,8 @@ export default function Home() {
               <Pdf
                 formData={formData}
                 totalValue={totalValue}
-                invoiceNumber={generateInvoiceNumber()}
-                currentDate={generateCurrentDate()}
+                invoiceNumber={invoiceNumber}
+                invoiceDate={invoiceDate}
               />
             }
             fileName={`invoice-${formData.company}.pdf`}
@@ -128,7 +128,9 @@ export default function Home() {
           </PDFDownloadLink>
         )}
         {validationError && (
-          <p className="text-red-500 text-center mt-4">Erro</p>
+          <p className="text-red-500 text-center mt-4">
+            Erro {validationError}
+          </p>
         )}
       </div>
     </main>

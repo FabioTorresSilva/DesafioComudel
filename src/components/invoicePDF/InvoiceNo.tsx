@@ -31,7 +31,8 @@ const styles = StyleSheet.create({
   });
 
 
-  const InvoiceNo = ({invoiceNumber, currentDate , formData}) => (
+  const InvoiceNo = ({invoiceNumber, invoiceDate , formData}) => (
+
         <Fragment>
             <View style={styles.invoiceNoContainer}>
                 <Text style={styles.invoicelabel}>Fatura nº:</Text>
@@ -39,7 +40,7 @@ const styles = StyleSheet.create({
             </View >
             <View style={styles.invoiceDateContainer}>
                 <Text style={styles.datelabel}>Data: </Text>
-                <Text >{currentDate}</Text>
+                <Text >{invoiceDate}</Text>
             </View >
             <View style={styles.invoiceDateContainer}>
                 <Text style={styles.companylabel}>Empresa:</Text>

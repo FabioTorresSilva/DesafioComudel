@@ -18,18 +18,18 @@ import { CompanyInputProps, } from "@/types/type";
               type="text"
               name="company"
               value={formData.company}
-              onChange={handleChange} // Chame a função handleChange ao alterar o campo de entrada
+              onChange={handleChange}
             />
           </div>
           <div className="flex flex-col">
             NIF
             <input
-              className="w-72 p-2 border border-gray-300 rounded mb-4"
+              className="w-80 p-2 border border-gray-300 rounded mb-4"
               type="text"
               name="vat"
               placeholder="(9 dígitos)"
               value={formData.vat}
-              onChange={handleChange} // Chame a função handleChange ao alterar o campo de entrada
+              onChange={handleChange} 
             />
           </div>
         </div>

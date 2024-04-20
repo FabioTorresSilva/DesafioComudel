@@ -26,7 +26,7 @@ const ProductInput: React.FC<ProductInputProps> = ({ product, index, onChange, o
       <div className="flex flex-col">
         Quantidade
         <input
-          className="w-24 p-2 border border-gray-300 rounded"
+          className="w-32 p-2 border border-gray-300 rounded"
           type="number"
           name="quantity"
           placeholder="Quantidade"

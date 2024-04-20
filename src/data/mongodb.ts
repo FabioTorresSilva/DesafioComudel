@@ -21,7 +21,6 @@ async function connectToMongo() {
   }
 }
 
-
 async function getMongoCollection(collectionName, dbName = DEFAULT_DB_NAME) {
   const client = await connectToMongo();
   return client.db(dbName).collection(collectionName);

@@ -1,4 +1,6 @@
-import { MAX_VALUE, MIN_VALUE } from "@/constants/constants"
+
+const MIN_VALUE = 100000;
+ const MAX_VALUE = 900000;
 
 export function generateInvoiceNumber() {
     return Math.floor(MIN_VALUE + Math.random() * MAX_VALUE)
