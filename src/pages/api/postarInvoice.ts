@@ -5,8 +5,8 @@ export default async function handler(req, res) {
     return res.status(405).json({ message: "Metodo não permitido" });
   }
   try {
-    const { company, vat, products, description } = req.body;
-    await createInvoice(company, vat, products, description);
+    const { company, vat, products, description, totalValue } = req.body;
+    await createInvoice(company, vat, products, description, totalValue );
     return res.status(201).json({
       message: "Invoice Guardado Com sucesso",
     });

@@ -1,17 +1,17 @@
 import { IFormData } from '@/types/type';
 import React, { useEffect, useState} from 'react'
 
+const DEFAULT_VALUE = { name: "", quantity: "", price: "" };
 
 export const useFormSubmit = (formData, setFormData, invoiceSchema, setValidationError, setisValid) => {
    
-    
-      const handleSubmit = async (e) => {
+      const handleSubmit = async (e:any) => {
         e.preventDefault(); // Impede o comportamento padrão de envio do formulário
-    
+        
         try {
           const formattedData = {
             ...formData,
-            products: formData.products.map((product) => ({
+            products: formData.products.map((product:object) => ({
               ...product,
               quantity: parseFloat(product.quantity),
               price: parseFloat(product.price),
@@ -33,6 +33,8 @@ export const useFormSubmit = (formData, setFormData, invoiceSchema, setValidatio
           // Verifica se a chamada da API foi bem-sucedida
           if (response.ok) {
             console.log("Invoice Guardada");
+            setValidationError("");
+        setisValid(true);
           } else {
             console.error("Erro ao criar receita");
           }
@@ -41,8 +43,7 @@ export const useFormSubmit = (formData, setFormData, invoiceSchema, setValidatio
           setValidationError(error.message);
           console.error("Formulário Inválido ou Erro na API");
         }
-        setValidationError("");
-        setisValid(true);
+        
       };
     
       // Function to handle input changes

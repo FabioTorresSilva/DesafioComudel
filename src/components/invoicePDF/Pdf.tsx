@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
 });
 
 const Pdf = ({ formData,  totalValue, invoiceNumber, currentDate}) => {
-  const logoUrl = 'https://static-media.fluxio.cloud/olisipoway/_icon/share-b2a65c5bedbb26af91c68cece307864c.png'; // Substitua com o link direto para sua imagem
+  const logoUrl = 'https://static-media.fluxio.cloud/olisipoway/_icon/share-b2a65c5bedbb26af91c68cece307864c.png';
 
   return (
     <Document>
