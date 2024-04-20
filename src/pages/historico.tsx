@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { MdArrowBack } from "react-icons/md";
 import { useRouter } from "next/router";
+import { IoIosArrowForward } from "react-icons/io";
 
 export default function Historico() {
   const [invoices, setInvoices] = useState([]);
@@ -78,19 +79,18 @@ export default function Historico() {
                   Total: {calculateTotalValue(invoice.products)} €
                 </p>
                 <div className="w-60">
-                  <p className="">
-                    Descrição:
-                    {invoice.description.length > 50
+                  <p className="text-gray-500">
+                    Descrição: {invoice.description.length > 50
                       ? `${invoice.description.substring(0, 20)}...`
                       : invoice.description}
-                  </p>
+                   </p>
                 </div>
               </div>
             </div>
             <div>
               <div className="cursor-pointer text-blue-500 items-center">
                 <button onClick={() => handleViewInvoice(invoice)}>
-                  Ver Fatura
+                  <IoIosArrowForward className="text-3xl flex flex-col items-center mt-7 mr-2" />
                 </button>
               </div>
             </div>
