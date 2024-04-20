@@ -28,7 +28,6 @@ export async function getServerSideProps({ query }) {
 
   // Converte a string JSON dos produtos de volta para um array
   const parsedProducts = JSON.parse(products);
-  
   const parsedCurrentDate = invoiceDate ? invoiceDate : null;
   const parsedInvoiceNumber = invoiceNumber ? invoiceNumber : null;
 
