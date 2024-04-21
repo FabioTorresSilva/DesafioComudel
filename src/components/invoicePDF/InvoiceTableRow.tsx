@@ -33,8 +33,18 @@ const styles = StyleSheet.create({
   });
 
 
-  const InvoiceTableRow = ({ items }) => {
-    const rows = items.map((item, index) => ( // Usando o índice como chave
+  interface Product {
+    name?: string;
+    quantity?: string;
+    price?: string;
+  }
+  
+  interface InvoiceTableRowProps {
+    items: Product[];
+  }
+
+  const InvoiceTableRow: React.FC<InvoiceTableRowProps> = ({ items }) => {
+    const rows = items.map((item, index) => ( 
       <View style={styles.row} key={index.toString()}>
         <Text style={styles.description}>{item.name}</Text>
         <Text style={styles.qty}>{item.quantity}</Text>

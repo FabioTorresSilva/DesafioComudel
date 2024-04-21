@@ -27,8 +27,11 @@ const styles = StyleSheet.create({
     },
   });
 
+  interface InvoiceTableFooterProps {
+    totalValue: number;
+  }
 
-const InvoiceTableFooter = ({totalValue}) => {
+  const InvoiceTableFooter: React.FC<InvoiceTableFooterProps> = ({ totalValue }) => {
     return(    
         <View style={styles.row}>
             <Text style={styles.description}>TOTAL:</Text>
