@@ -1,5 +1,6 @@
 import React, {Fragment} from 'react';
 import {Text, View, StyleSheet } from '@react-pdf/renderer';
+import { InvoiceTableRowProps } from '@/types/type';
 
 const borderColor = '#90e5fc'
 const styles = StyleSheet.create({
@@ -31,17 +32,6 @@ const styles = StyleSheet.create({
         paddingRight: 8,
     },
   });
-
-
-  interface Product {
-    name?: string;
-    quantity?: string;
-    price?: string;
-  }
-  
-  interface InvoiceTableRowProps {
-    items: Product[];
-  }
 
   const InvoiceTableRow: React.FC<InvoiceTableRowProps> = ({ items }) => {
     const rows = items.map((item, index) => ( 

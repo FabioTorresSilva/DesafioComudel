@@ -1,10 +1,6 @@
 import React from "react";
 import { Text, View, StyleSheet } from "@react-pdf/renderer";
-import { IFormData } from "@/types/type";
-
-interface InvoiceDescriptionProps {
-  formData: IFormData; 
-}
+import { InvoiceDescriptionProps } from "@/types/type";
 
 const styles = StyleSheet.create({
   titleContainer: {

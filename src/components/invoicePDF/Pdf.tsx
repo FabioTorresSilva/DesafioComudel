@@ -4,6 +4,7 @@ import InvoiceTitle from './InvoiceTitle';
 import InvoiceNo from './InvoiceNo';
 import InvoiceItemsTable from './InvoiceItemsTable';
 import InvoiceDescription from './InvoiceDescription';
+import { PdfProps } from '@/types/type';
 
 const styles = StyleSheet.create({
   page: {
@@ -22,24 +23,6 @@ const styles = StyleSheet.create({
     marginRight: 'auto',
   }
 });
-
-interface PdfProps {
-  formData: {
-    company: string;
-    vat: string;
-    products: {
-      name?: string;
-      quantity?: string;
-      price?: string;
-    }[];
-    description?: string;
-  };
-  totalValue: number;
-  invoiceNumber: any;
-  invoiceDate: string;
-}
-
-
 
 const Pdf: React.FC<PdfProps> = ({ formData, totalValue, invoiceNumber, invoiceDate }) => {
   const logoUrl = 'https://static-media.fluxio.cloud/olisipoway/_icon/share-b2a65c5bedbb26af91c68cece307864c.png';

@@ -9,8 +9,8 @@ const CompanyInput: React.FC<CompanyInputProps> = ({ formData, onChange }) => {
 
     return (
       <>
-        <div className="flex gap-3">
-          <div className="flex flex-col w-full ">
+        <div className="flex gap-4">
+          <div className="flex flex-col w-full min-w-40 ">
             Nome da Empresa
             <input
               className="w-full p-2 border border-gray-500 rounded mb-4"
@@ -23,7 +23,7 @@ const CompanyInput: React.FC<CompanyInputProps> = ({ formData, onChange }) => {
           <div className="flex flex-col">
             NIF
             <input
-              className="w-80 p-2 border border-gray-500 rounded mb-4"
+              className="sm:min-w-80 w-full p-2 border border-gray-500 rounded "
               type="text"
               name="vat"
               placeholder="(9 dígitos)"

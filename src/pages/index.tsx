@@ -50,8 +50,8 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen bg-gray-300 flex justify-center items-center p-6">
-      <div className="w-full max-w-4xl bg-white rounded-lg shadow-lg p-8">
+    <main className="min-h-screen min-w-screen w-full h-full flex justify-center items-center p-6">
+      <div className="w-full max-w-4xl bg-white rounded-lg shadow-lg p-8 shrink-0 ">
         <div className="flex justify-center">
           <img
             className="w-40 "

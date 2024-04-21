@@ -4,12 +4,9 @@ import InvoiceTableHeader from "./InvoiceTableHeader";
 import InvoiceTableRow from "./InvoiceTableRow";
 import InvoiceTableBlankSpace from "./InvoiceTableBlankSpace";
 import InvoiceTableFooter from "./InvoiceTableFooter";
-import { IFormData } from "@/types/type";
+import { InvoiceItemsTableProps } from "@/types/type";
 
-interface InvoiceItemsTableProps {
-  formData: IFormData;
-  totalValue: number; 
-}
+
 
 const tableRowsCount = 11;
 

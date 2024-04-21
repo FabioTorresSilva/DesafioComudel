@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import { Text, View, StyleSheet } from "@react-pdf/renderer";
+import { InvoiceTableBlankSpaceProps } from "@/types/type";
 
 const borderColor = "#90e5fc";
 const styles = StyleSheet.create({
@@ -28,11 +29,8 @@ const styles = StyleSheet.create({
   },
 });
 
-interface InvoiceTableBlankSpaceProps {
-    rowsCount: number;
-  }
 
-  const InvoiceTableBlankSpace: React.FC<InvoiceTableBlankSpaceProps> = ({ rowsCount }) => {
+const InvoiceTableBlankSpace: React.FC<InvoiceTableBlankSpaceProps> = ({ rowsCount }) => {
   const blankRows = Array(rowsCount).fill(0);
   const rows = blankRows.map((x, i) => (
     <View style={styles.row} key={i}>

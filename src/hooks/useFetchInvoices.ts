@@ -1,15 +1,5 @@
-import { Product } from '@/types/type';
-import { useState, useEffect } from 'react';
-
-export interface Invoice {
-  _id: string;
-  company: string;
-  vat: string;
-  invoiceNumber: string;
-  totalValue: number;
-  products: Product[]; // Assuming Product is defined elsewhere
-  invoiceDate: string; // Assuming invoiceDate is a string representing the date
-}
+import { Invoice } from "@/types/type";
+import { useState, useEffect } from "react";
 
 export default function useFetchInvoices() {
   const [invoices, setInvoices] = useState<Invoice[]>([]);
@@ -33,7 +23,10 @@ export default function useFetchInvoices() {
   }, []);
 
   const sortInvoices = (data: Invoice[]) => {
-    data.sort((a, b) => new Date(b.invoiceDate).getTime() - new Date(a.invoiceDate).getTime());
+    data.sort(
+      (a, b) =>
+        new Date(b.invoiceDate).getTime() - new Date(a.invoiceDate).getTime()
+    );
     return data;
   };
 
