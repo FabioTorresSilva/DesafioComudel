@@ -26,7 +26,25 @@ const styles = StyleSheet.create({
   }
 });
 
-const Pdf = ({ formData,  totalValue, invoiceNumber, invoiceDate}) => {
+
+interface PdfProps {
+  formData: {
+    company: string;
+    vat: string;
+    products: {
+      name?: string;
+      quantity?: string;
+      price?: string;
+    }[];
+    description?: string;
+  };
+  totalValue: number;
+  invoiceNumber: string;
+  invoiceDate: string;
+}
+
+
+const Pdf: React.FC<PdfProps> = ({ formData, totalValue, invoiceNumber, invoiceDate }) => {
   const logoUrl = 'https://static-media.fluxio.cloud/olisipoway/_icon/share-b2a65c5bedbb26af91c68cece307864c.png';
   return (
     <Document>
