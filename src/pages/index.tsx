@@ -3,25 +3,13 @@ import { z } from "zod";
 import { useRouter } from "next/router";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 import Pdf from "@/components/invoicePDF/Pdf";
-import { calculateTotalValue } from "@/hooks/calculateTotalValue";
-import { useFormSubmit } from "@/hooks/FormSubmit";
+import { calculateTotalValue } from "@/hooks/useCalculateTotalValue";
+import { useFormSubmit } from "@/hooks/useFormSubmit";
 import ProductInput from "@/components/gerarFatura/ProductInput";
 import CompanyInput from "@/components/gerarFatura/CompanyInput";
 import { generateCurrentDate, generateInvoiceNumber } from "@/utils/utils";
+import { invoiceSchema } from '../types/zod'
 
-// ZOD SCHEMA, verificacao por parte do front-end
-const invoiceSchema = z.object({
-  company: z.string(),
-  vat: z.string().length(9), //NIF 9 digits
-  products: z.array(
-    z.object({
-      name: z.string(),
-      quantity: z.number().min(1),
-      price: z.number().min(0),
-    })
-  ),
-  description: z.string(),
-});
 
 export default function Home() {
   const router = useRouter();
@@ -37,13 +25,7 @@ export default function Home() {
   const [invoiceDate, setInvoiceDate] = useState(generateCurrentDate());
   const { totalValue, setTotalValue } = calculateTotalValue(formData);
 
-  const {
-    handleSubmit,
-    handleInputChange,
-    handleProductChange,
-    removeProductField,
-    addProductField,
-  } = useFormSubmit(
+  const {handleSubmit,handleInputChange,handleProductChange,removeProductField,addProductField} = useFormSubmit(
     formData,
     setFormData,
     invoiceSchema,

@@ -1,13 +1,12 @@
 import React from "react";
 import { CompanyInputProps, } from "@/types/type";
 
-
   const CompanyInput: React.FC<CompanyInputProps> = ({ formData, onChange }) => {
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       const { name, value } = e.target;
       onChange({ ...formData, [name]: value });
     };
-  
+
     return (
       <>
         <div className="flex gap-3">

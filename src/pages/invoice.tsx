@@ -14,7 +14,6 @@ const InvoicePage = ({ formData, totalValue, invoiceNumber, invoiceDate }) => {
   );
 };
 
-// Função para buscar os parâmetros da URL e passá-los para o componente PdfPreview
 export async function getServerSideProps({ query }) {
   const {
     company,
@@ -26,7 +25,6 @@ export async function getServerSideProps({ query }) {
     invoiceDate,
   } = query;
 
-  // Converte a string JSON dos produtos de volta para um array
   const parsedProducts = JSON.parse(products);
   const parsedCurrentDate = invoiceDate ? invoiceDate : null;
   const parsedInvoiceNumber = invoiceNumber ? invoiceNumber : null;

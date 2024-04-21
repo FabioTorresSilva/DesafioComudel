@@ -1,11 +1,15 @@
 import React from "react";
 import { Product, ProductInputProps } from "@/types/type";
 
-const ProductInput: React.FC<ProductInputProps> = ({ product, index, onChange, onRemove }) => {
+const ProductInput: React.FC<ProductInputProps> = ({
+  product,
+  index,
+  onChange,
+  onRemove,
+}) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     onChange(e, index);
   };
-
   const handleRemove = () => {
     onRemove(index);
   };

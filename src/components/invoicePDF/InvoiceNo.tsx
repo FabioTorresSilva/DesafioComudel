@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
                 <Text >{invoiceDate}</Text>
             </View >
             <View style={styles.invoiceDateContainer}>
-                <Text style={styles.companylabel}>Empresa:</Text>
+                <Text style={styles.companylabel}></Text>
                 <Text style={styles.invoiceDate}>{formData.company}</Text>
             </View >
             <View style={styles.invoiceDateContainer}>
