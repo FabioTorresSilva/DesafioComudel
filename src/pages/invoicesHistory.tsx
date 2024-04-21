@@ -35,7 +35,7 @@ export default function Historico() {
 
   return (
     <main className={`min-h-screen bg-gray-300  p-6 justify-center  flex `}>
-      <div className="sm:pr-14 pl-4 mt-6 pr-8">
+      <div className="hidden sm:block sm:pr-14 pl-4 mt-6 pr-8">
         <div className="bg-white p-2 shadow-sm fixed cursor-pointer rounded-full text-xl sm:text-3xl font-bold flex justify-center align-middle items-center text-blue-700 ">
           <MdArrowBack onClick={handleBack} />
         </div>
@@ -43,11 +43,11 @@ export default function Historico() {
       <div className="flex-col justify-center shadow-xl w-full max-w-5xl h-full rounded-2xl bg-white mt-8 m-4 ">
         <div className="flex bg-whiteBlueBackground rounded-t-2xl p-1 text-center">
           <div className="border-whiteBlueBorder  p-2 w-2/5 ">Empresa</div>
-          <div className=" border-whiteBlueBorder border-x-2 py-2 w-1/4">
+          <div className=" border-whiteBlueBorder border-x-2 p-2 w-1/4 ">
             Fatura Nº
           </div>
           <div className="hidden md:block border-whiteBlueBorder p-2 w-1/4">Total</div>
-          <div className="border-whiteBlueBorder md:border-l-2 p-2 w-20 md:w-1/12 text-center align  justify-center ">
+          <div className="overflow-hidden border-whiteBlueBorder md:border-l-2 p-2 w-20 md:w-1/12 text-center align  justify-center ">
             Visualizar
           </div>
           <div className="border-whiteBlueBorder border-l-2 md:w-1/12 w-20 py-2 text-center align  justify-center ">
@@ -63,10 +63,10 @@ export default function Historico() {
               <div className="text-blue-700 font-bold">{invoice.company} </div>{" "}
               <div className="text-gray-500">NIF: {invoice.vat}</div>
             </div>
-            <div className=" border-whiteBlueBorder  px-4 border-x-2 text-right p-2 w-1/4">
+            <div className=" border-whiteBlueBorder overflow-hidden  sm:px-4 border-x-2 text-right p-2 w-1/4">
               {invoice.invoiceNumber}
             </div>
-            <div className="border-whiteBlueBorder hidden md:block px-4 p-2 w-1/4 text-right">
+            <div className="border-whiteBlueBorder hidden md:block  p-2 w-1/4 text-right">
               {invoice.totalValue} €
             </div>
             <div className="border-whiteBlueBorder md:w-1/12 w-20  md:border-l-2 p-2 px-5 text-center items-center justify-center ">
