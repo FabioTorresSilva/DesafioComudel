@@ -12,9 +12,9 @@ import { CompanyInputProps, } from "@/types/type";
       <>
         <div className="flex gap-3">
           <div className="flex flex-col w-full ">
-            Nome Empresa
+            Nome da Empresa
             <input
-              className="w-full p-2 border border-gray-300 rounded mb-4"
+              className="w-full p-2 border border-gray-500 rounded mb-4"
               type="text"
               name="company"
               value={formData.company}
@@ -24,7 +24,7 @@ import { CompanyInputProps, } from "@/types/type";
           <div className="flex flex-col">
             NIF
             <input
-              className="w-80 p-2 border border-gray-300 rounded mb-4"
+              className="w-80 p-2 border border-gray-500 rounded mb-4"
               type="text"
               name="vat"
               placeholder="(9 dígitos)"

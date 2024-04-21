@@ -15,10 +15,9 @@ const ProductInput: React.FC<ProductInputProps> = ({ product, index, onChange, o
       <div className="flex flex-col w-full">
         Produto
         <input
-          className="flex-1 p-2 border border-gray-300 rounded"
+          className="flex-1 p-2 border border-gray-500 rounded"
           type="text"
           name="name"
-          placeholder="Nome Produto"
           value={product.name}
           onChange={handleChange}
         />
@@ -26,10 +25,9 @@ const ProductInput: React.FC<ProductInputProps> = ({ product, index, onChange, o
       <div className="flex flex-col">
         Quantidade
         <input
-          className="w-32 p-2 border border-gray-300 rounded"
+          className="w-32 p-2 border border-gray-500 rounded"
           type="number"
           name="quantity"
-          placeholder="Quantidade"
           value={product.quantity}
           onChange={handleChange}
         />
@@ -38,10 +36,9 @@ const ProductInput: React.FC<ProductInputProps> = ({ product, index, onChange, o
         Preço
         <div className="flex flex-row gap-3 items-center">
           <input
-            className="w-32 p-2 border border-gray-300 rounded"
+            className="w-32 p-2 border border-gray-500 rounded"
             type="number"
             name="price"
-            placeholder="Preço"
             value={product.price}
             onChange={handleChange}
           />

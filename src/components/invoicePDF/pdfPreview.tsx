@@ -4,9 +4,8 @@ import Pdf from './Pdf';
 import dynamic from 'next/dynamic';
 
 // Use dynamic import for PDFViewer component
-//TER atencao
 const PDFViewerDynamic = dynamic(() => import('@react-pdf/renderer').then((mod) => mod.PDFViewer), {
-  ssr: false, // Disable server-side rendering
+  ssr: false, 
 });
 
 const PdfPreview = ({ formData, totalValue, invoiceNumber, invoiceDate }) => {

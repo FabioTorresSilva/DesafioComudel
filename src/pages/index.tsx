@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 import Pdf from "@/components/invoicePDF/Pdf";
 import { calculateTotalValue } from "@/hooks/calculateTotalValue";
-import { useFormSubmit } from "@/hooks/useFormSubmit";
+import { useFormSubmit } from "@/hooks/FormSubmit";
 import ProductInput from "@/components/gerarFatura/ProductInput";
 import CompanyInput from "@/components/gerarFatura/CompanyInput";
 import { generateCurrentDate, generateInvoiceNumber } from "@/utils/utils";
@@ -59,7 +59,7 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen bg-gray-200 flex justify-center items-center p-6">
+    <main className="min-h-screen bg-gray-300 flex justify-center items-center p-6">
       <div className="w-full max-w-4xl bg-white rounded-lg shadow-lg p-8">
         <div className="mb-8 flex justify-between">
           <h1 className="text-2xl font-bold text-gray-800">Gerar Fatura</h1>
@@ -94,10 +94,10 @@ export default function Home() {
             </span>
           </div>
           <textarea
-            className="w-full p-2 border border-gray-300 rounded"
+            className="w-full p-2 border border-gray-500 rounded"
             rows={4}
             name="description"
-            placeholder="Descrição Fatura"
+            placeholder="Descrição da Fatura"
             value={formData.description}
             onChange={handleInputChange}
           />
@@ -123,13 +123,13 @@ export default function Home() {
             fileName={`invoice-${formData.company}.pdf`}
             className="text-blue-600 hover:underline flex justify-center mt-4"
           >
-            {({ loading }) => (loading ? "A Gerar Pdf..." : "Download PDF.")}
+            {({ loading }) => (loading ? "A Gerar PDF..." : "Download PDF.")}
           </PDFDownloadLink>
         )}
         {validationError && (
-          <p className="text-red-500 text-center mt-4">Erro ao Validar.</p>
+          <p className="text-red-500 text-center mt-4">Erro ao Validar Fatura.</p>
         )}
       </div>
     </main>
-  );
+  )
 }

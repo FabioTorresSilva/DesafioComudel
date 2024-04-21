@@ -29,7 +29,7 @@ export const useFormSubmit = (
 
       invoiceSchema.parse(formattedData);
   
-      const response = await fetch("/api/postarInvoice", {
+      const response = await fetch("/api/createInvoice", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -37,22 +37,19 @@ export const useFormSubmit = (
         body: JSON.stringify(formattedData),
       });
   
-      // Verifica se a chamada da API foi bem-sucedida
       if (response.ok) {
-        console.log("Invoice Guardada");
+        console.log("Fatura Guardada");
         setValidationError("");
         setisValid(true);
       } else {
-        console.error("Erro ao criar Invoice");
+        console.error("Erro ao criar Fatura");
       }
     } catch (error) {
-      // Manipula erros de validação ou de envio da API
       setValidationError(error.message);
       console.error("Formulário Inválido ou Erro na API");
     }
   };
 
-  // Function to handle input changes
   const handleInputChange = (e: any) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({

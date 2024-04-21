@@ -1,4 +1,4 @@
-import { createInvoice } from "@/services/postarInvoice";
+import { createInvoice } from "@/services/createInvoice";
 
 export default async function handler(req, res) {
    if (req.method !== "POST") {
