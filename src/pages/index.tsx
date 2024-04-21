@@ -55,7 +55,7 @@ export default function Home() {
   );
 
   const handleViewHistory = () => {
-    router.push("/historico");
+    router.push("/invoicesHistory");
   };
 
   return (
