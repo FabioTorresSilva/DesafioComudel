@@ -39,11 +39,7 @@ export default function Historico() {
   };
 
   const handleDeleteInvoice = (invoice) => {
-    const url = `/invoice?${new URLSearchParams({
-      ...invoice,
-      products: JSON.stringify(invoice.products),
-    }).toString()}`;
-    window.open(url, "_blank");
+    console.log(invoice_id)
   };
 
   const handleBack = () => {
@@ -72,7 +68,7 @@ export default function Historico() {
           </div>
         </div>
         {invoices.map((invoice, index) => (
-          <div className="p-1 flex border-whiteBlueBorder border rounded-b-2xl">
+          <div className="p-1 flex border-whiteBlueBorder border last:rounded-b-2xl">
             <div className="border-whiteBlueBorder px-4  p-2 w-2/5   gap-2">
               <div className="text-blue-700 font-bold">{invoice.company} </div> <div className="text-gray-500">NIF: {invoice.vat}</div>
             </div>
