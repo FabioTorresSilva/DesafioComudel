@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 
 export const useCalculateTotalValue = (formData: IFormData | undefined) => {
   const [totalValue, setTotalValue] = useState<number>(0);
-
   useEffect(() => {
     if (formData && formData.products) {
       const total = formData.products.reduce(

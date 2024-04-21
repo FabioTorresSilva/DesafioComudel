@@ -23,6 +23,7 @@ export default function useFetchInvoices() {
   }, []);
 
   const sortInvoices = (data: Invoice[]) => {
+    data.reverse()
     data.sort(
       (a, b) =>
         new Date(b.invoiceDate).getTime() - new Date(a.invoiceDate).getTime()
