@@ -24,7 +24,7 @@ const CompanyInput: React.FC<CompanyInputProps> = ({ formData, onChange }) => {
             NIF
             <input
               className="sm:min-w-80 w-full p-2 border border-gray-500 rounded "
-              type="text"
+              type="number"
               name="vat"
               placeholder="(9 dígitos)"
               value={formData.vat}
