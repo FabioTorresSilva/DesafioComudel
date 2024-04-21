@@ -1,6 +1,6 @@
 import { deleteInvoice } from "@/services/deleteInvoice";
 
-export default async function handler(req, res) {
+export default async function handler(req : any, res : any) {
     if (req.method !== "DELETE") {
         return res.status(405).json({ message: "Método não permitido" });
     }

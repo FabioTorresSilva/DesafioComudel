@@ -1,7 +1,7 @@
 import { searchInvoices } from "@/services/allInvoices";
 
 
-export default async function handler(req, res) {
+export default async function handler(req : any, res : any) {
     try {
         if (req.method === "GET") {
             const invoices = await searchInvoices();  

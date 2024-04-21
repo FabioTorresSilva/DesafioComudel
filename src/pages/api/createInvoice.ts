@@ -1,6 +1,6 @@
 import { createInvoice } from "@/services/createInvoice";
 
-export default async function handler(req, res) {
+export default async function handler(req : any, res : any) {
    if (req.method !== "POST") {
     return res.status(405).json({ message: "Metodo não permitido" });
   }
