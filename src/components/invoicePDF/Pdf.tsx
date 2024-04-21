@@ -3,8 +3,6 @@ import { Page, Document, Image, StyleSheet, ImageProps } from '@react-pdf/render
 import InvoiceTitle from './InvoiceTitle';
 import InvoiceNo from './InvoiceNo';
 import InvoiceItemsTable from './InvoiceItemsTable';
-
-import logo from "../../public/olisipo.png";
 import InvoiceDescription from './InvoiceDescription';
 
 const styles = StyleSheet.create({
@@ -37,7 +35,7 @@ interface PdfProps {
     description?: string;
   };
   totalValue: number;
-  invoiceNumber: string;
+  invoiceNumber: any;
   invoiceDate: string;
 }
 

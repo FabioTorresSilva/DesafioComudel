@@ -3,7 +3,7 @@ import {Text, View, StyleSheet } from '@react-pdf/renderer';
 import { IFormData } from '@/types/type';
 
 interface InvoiceNoProps {
-    invoiceNumber: string;
+    invoiceNumber: any;
     invoiceDate: string;
     formData: IFormData;
   }

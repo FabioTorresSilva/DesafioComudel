@@ -5,12 +5,13 @@ import { MdDelete, MdArrowBack, MdOutlinePreview } from "react-icons/md";
 import useFetchInvoices from "@/hooks/useFetchInvoices";
 import useDeleteInvoice from "@/hooks/useDeleteInvoice";
 
+
 export default function Historico() {
   const { invoices, fetchInvoices } = useFetchInvoices();
   const { deleteInvoice, error } = useDeleteInvoice();
   const router = useRouter();
  
-  const handleViewInvoice = (invoice) => {
+  const handleViewInvoice = (invoice : any) => {
     const url = `/invoice?${new URLSearchParams({
       ...invoice,
       products: JSON.stringify(invoice.products),
@@ -18,7 +19,7 @@ export default function Historico() {
     window.open(url, "_blank");
   };
 
-  const handleDeleteInvoice = async (invoice) => {
+  const handleDeleteInvoice = async (invoice:any) => {
     try {
       const deleted = await deleteInvoice(invoice._id);
       if (deleted) {
@@ -54,7 +55,7 @@ export default function Historico() {
             Apagar
           </div>
         </div>
-        {invoices.map((invoice) => (
+        {invoices.map((invoice : any) => (
           <div key={invoice._id} className=" flex border-whiteBlueBorder border last:rounded-b-2xl">
             <div className="border-whiteBlueBorder px-4  p-2 w-2/5   gap-2">
               <div className="text-blue-700 font-bold">{invoice.company} </div>{" "}

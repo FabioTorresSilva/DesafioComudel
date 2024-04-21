@@ -20,6 +20,15 @@ export interface IFormData {
   description?: string;
 }
 
+export interface Invoice {
+  _id: string;
+  company: string;
+  vat: string;
+  invoiceNumber: string;
+  totalValue: number;
+  products: Product[]; 
+}
+
 export interface ProductInputProps {
   product: Product;
   index: number;

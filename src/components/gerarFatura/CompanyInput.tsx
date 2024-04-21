@@ -1,11 +1,12 @@
 import React from "react";
-import { CompanyInputProps, } from "@/types/type";
+import { CompanyInputProps, IFormData, } from "@/types/type";
 
-  const CompanyInput: React.FC<CompanyInputProps> = ({ formData, onChange }) => {
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-      const { name, value } = e.target;
-      onChange({ ...formData, [name]: value });
-    };
+const CompanyInput: React.FC<CompanyInputProps> = ({ formData, onChange }) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    // Update the formData state and pass it to the onChange prop
+    onChange({ ...formData, [name]: value } as IFormData);
+  };
 
     return (
       <>

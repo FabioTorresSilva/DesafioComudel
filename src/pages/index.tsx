@@ -9,6 +9,7 @@ import ProductInput from "@/components/gerarFatura/ProductInput";
 import CompanyInput from "@/components/gerarFatura/CompanyInput";
 import { generateCurrentDate, generateInvoiceNumber } from "@/utils/utils";
 import { invoiceSchema } from "../types/zod";
+import { IFormData } from "@/types/type";
 
 export default function Home() {
   const router = useRouter();
@@ -45,6 +46,10 @@ export default function Home() {
     router.push("/invoicesHistory");
   };
 
+  const handleInputChangeCompany = (newFormData: any) => {
+    setFormData(newFormData);
+  };
+
   return (
     <main className="min-h-screen bg-gray-300 flex justify-center items-center p-6">
       <div className="w-full max-w-4xl bg-white rounded-lg shadow-lg p-8">
@@ -58,7 +63,7 @@ export default function Home() {
           </button>
         </div>
         <form onSubmit={handleSubmit} className="space-y-6">
-          <CompanyInput formData={formData} onChange={setFormData} />
+          <CompanyInput formData={formData} onChange={handleInputChangeCompany} />
           {formData.products.map((product, index) => (
             <ProductInput
               key={index}
