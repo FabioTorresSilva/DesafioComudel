@@ -30,12 +30,6 @@ export default function Historico() {
     return data;
   };
 
-  const calculateTotalValue = (products) => {
-    return products.reduce((total, product) => {
-      return total + product.quantity * product.price;
-    }, 0);
-  };
-
   const handleViewInvoice = (invoice) => {
     const url = `/invoice?${new URLSearchParams({
       ...invoice,
@@ -78,7 +72,7 @@ export default function Historico() {
           </div>
         </div>
         {invoices.map((invoice, index) => (
-          <div className="p-1 flex border-whiteBlueBorder border">
+          <div className="p-1 flex border-whiteBlueBorder border rounded-b-2xl">
             <div className="border-whiteBlueBorder px-4  p-2 w-2/5   gap-2">
               <div className="text-blue-700 font-bold">{invoice.company} </div> <div className="text-gray-500">NIF: {invoice.vat}</div>
             </div>
@@ -86,7 +80,7 @@ export default function Historico() {
               {invoice.invoiceNumber}
             </div>
             <div className="border-whiteBlueBorder px-4 p-2 w-1/4 text-right">
-              {calculateTotalValue(invoice.products)} €
+            {invoice.totalValue} €
             </div>
             <div className="border-whiteBlueBorder  border-l-2 p-2 text-center items-center justify-center px-3">
               <button onClick={() => handleViewInvoice(invoice)}>

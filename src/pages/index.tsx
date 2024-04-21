@@ -120,7 +120,7 @@ export default function Home() {
                 invoiceDate={invoiceDate}
               />
             }
-            fileName={`invoice-${formData.company}.pdf`}
+            fileName={`Fatura-${formData.company}.pdf`}
             className="text-blue-600 hover:underline flex justify-center mt-4"
           >
             {({ loading }) => (loading ? "A Gerar PDF..." : "Download PDF.")}
