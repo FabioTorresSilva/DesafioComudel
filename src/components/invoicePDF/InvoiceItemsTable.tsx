@@ -8,7 +8,7 @@ import { IFormData } from "@/types/type";
 
 interface InvoiceItemsTableProps {
   formData: IFormData;
-  totalValue: number; // Assuming totalValue is a number
+  totalValue: number; 
 }
 
 const tableRowsCount = 11;

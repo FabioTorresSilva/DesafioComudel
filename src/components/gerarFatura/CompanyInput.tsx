@@ -4,7 +4,6 @@ import { CompanyInputProps, IFormData, } from "@/types/type";
 const CompanyInput: React.FC<CompanyInputProps> = ({ formData, onChange }) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    // Update the formData state and pass it to the onChange prop
     onChange({ ...formData, [name]: value } as IFormData);
   };
 
