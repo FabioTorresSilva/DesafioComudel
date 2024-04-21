@@ -1,7 +1,7 @@
 import React from "react";
 import PdfPreview from "../components/invoicePDF/pdfPreview";
 
-const InvoicePage = ({ formData, totalValue, invoiceNumber, invoiceDate }) => {
+const InvoicePage = ({ formData , totalValue, invoiceNumber, invoiceDate } : any) => {
   return (
     <div>
       <PdfPreview
@@ -14,9 +14,9 @@ const InvoicePage = ({ formData, totalValue, invoiceNumber, invoiceDate }) => {
   );
 };
 
-export async function getServerSideProps({ query }) {
+export async function getServerSideProps({ query  } : any) {
   const {
-    company,
+    company ,
     vat,
     products,
     description,
