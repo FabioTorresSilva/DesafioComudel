@@ -49,7 +49,9 @@ const Pdf: React.FC<PdfProps> = ({ formData, totalValue, invoiceNumber, invoiceD
   return (
     <Document>
     <Page size="A4" style={styles.page}>
+    // @ts-ignore
         <Image alt="logo" style={styles.logo} src={logoUrl} />
+        // @ts-ignore
         <InvoiceTitle title="Fatura"/>
         <InvoiceNo invoiceNumber={invoiceNumber} invoiceDate={invoiceDate} formData={formData} />
         <InvoiceItemsTable formData={formData} totalValue={totalValue} />
