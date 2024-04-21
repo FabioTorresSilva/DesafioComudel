@@ -36,7 +36,7 @@ export default function Historico() {
   return (
     <main className={`min-h-screen bg-gray-300  p-6 justify-center  flex `}>
       <div className="hidden sm:block sm:pr-14 pl-4 mt-6 pr-8">
-        <div className="bg-white p-2 shadow-sm fixed cursor-pointer rounded-full text-xl sm:text-3xl font-bold flex justify-center align-middle items-center text-blue-700 ">
+        <div className="bg-white p-2 shadow-sm fixed cursor-pointer rounded-full text-xl sm:text-2xl font-bold flex justify-center align-middle items-center text-blue-700 ">
           <MdArrowBack onClick={handleBack} />
         </div>
       </div>
