@@ -3,7 +3,7 @@ import { useState } from 'react';
 const useDeleteInvoice = () => {
   const [error, setError] = useState(null);
 
-  const deleteInvoice = async (invoiceId) => {
+  const deleteInvoice = async (invoiceId : any) => {
     try {
       const response = await fetch(`/api/deleteInvoice`, {
         method: "DELETE",
@@ -17,7 +17,7 @@ const useDeleteInvoice = () => {
       }
       console.log("Fatura apagada com sucesso.");
       return true; 
-    } catch (error) {
+    } catch (error : any) {
       console.error("Erro ao apagar Fatura:", error);
       setError(error.message);
       return false; 

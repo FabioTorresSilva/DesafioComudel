@@ -1,14 +1,14 @@
 const DEFAULT_VALUE = { name: "", quantity: "", price: "" };
 
 export const useFormSubmit = (
-  formData,
-  setFormData,
-  invoiceSchema,
-  setValidationError,
-  setisValid,
-  invoiceNumber,
-  invoiceDate,
-  totalValue 
+  formData : any,
+  setFormData : any,
+  invoiceSchema : any,
+  setValidationError : any,
+  setisValid : any,
+  invoiceNumber : any,
+  invoiceDate : any,
+  totalValue : any 
 ) => {
 
   const handleSubmit = async (e: any) => {
@@ -19,7 +19,7 @@ export const useFormSubmit = (
         ...formData,
         invoiceNumber: invoiceNumber,
         invoiceDate: invoiceDate,
-        products: formData.products.map((product) => ({
+        products: formData.products.map((product : any) => ({
           ...product,
           quantity: parseFloat(product.quantity),
           price: parseFloat(product.price),
@@ -44,7 +44,7 @@ export const useFormSubmit = (
       } else {
         console.error("Erro ao criar Fatura");
       }
-    } catch (error) {
+    } catch (error : any) {
       setValidationError(error.message);
       console.error("Formulário Inválido ou Erro na API");
     }
@@ -52,31 +52,31 @@ export const useFormSubmit = (
 
   const handleInputChange = (e: any) => {
     const { name, value } = e.target;
-    setFormData((prevData) => ({
+    setFormData((prevData : any) => ({
       ...prevData,
       [name]: value,
     }));
   };
 
-  const handleProductChange = (e, index) => {
+  const handleProductChange = (e : any, index : number) => {
     const { name, value } = e.target;
-    setFormData((prevData) => ({
+    setFormData((prevData : any) => ({
       ...prevData,
-      products: prevData.products.map((product, i) =>
+      products: prevData.products.map((product : any, i: any) =>
         i === index ? { ...product, [name]: value } : product
       ),
     }));
   };
 
   const addProductField = () => {
-    setFormData((prevData) => ({
+    setFormData((prevData :any) => ({
       ...prevData,
       products: [...prevData.products, DEFAULT_VALUE],
     }));
   };
 
-  const removeProductField = (index) => {
-    const updatedProducts = formData.products.filter((_, i) => i !== index);
+  const removeProductField = (index : any) => {
+    const updatedProducts = formData.products.filter((_ : undefined, i : number) => i !== index);
     setFormData({ ...formData, products: updatedProducts });
   };
 

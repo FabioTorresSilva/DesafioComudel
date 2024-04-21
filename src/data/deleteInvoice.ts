@@ -3,7 +3,7 @@ const { getMongoCollection } = require('../data/mongodb');
 
 const collectionName = "comudel";
 
-export async function deleteInvoiceDataBase(invoiceId) {
+export async function deleteInvoiceDataBase(invoiceId : any) {
     try {
         let result; 
         const collection = await getMongoCollection(collectionName);

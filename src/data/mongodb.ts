@@ -1,16 +1,16 @@
 const { MongoClient } = require('mongodb');
 
 const DEFAULT_DB_NAME = process.env.DEFAULT_DB_NAME || "comudel";
-const URL = process.env.MONGO_URL;
+const URLMONGO = process.env.MONGO_URL;
 const PORT = process.env.PORT || 3000;
 
-let client;
-let connectionTimeout;
+let client : any;
+let connectionTimeout : any;
 
 async function connectToMongo() {
   try {
     if (!client) {
-      client = await MongoClient.connect(URL);
+      client = await MongoClient.connect(URLMONGO);
       clearTimeout(connectionTimeout);
       connectionTimeout = setTimeout(closeMongoConnection, 10000);
     }
@@ -21,14 +21,14 @@ async function connectToMongo() {
   }
 }
 
-async function getMongoCollection(collectionName, dbName = DEFAULT_DB_NAME) {
+async function getMongoCollection(collectionName : any, dbName = DEFAULT_DB_NAME) {
   const client = await connectToMongo();
   return client.db(dbName).collection(collectionName);
 }
 
 async function closeMongoConnection() {
   try {
-    if (client) {
+    if (client ) {
       await client.close();
       client = null;
       console.log("MongoDB connection closed.");

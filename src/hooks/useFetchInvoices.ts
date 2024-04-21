@@ -1,7 +1,18 @@
+import { Product } from '@/types/type';
 import { useState, useEffect } from 'react';
 
+export interface Invoice {
+  _id: string;
+  company: string;
+  vat: string;
+  invoiceNumber: string;
+  totalValue: number;
+  products: Product[]; // Assuming Product is defined elsewhere
+  invoiceDate: string; // Assuming invoiceDate is a string representing the date
+}
+
 export default function useFetchInvoices() {
-  const [invoices, setInvoices] = useState([]);
+  const [invoices, setInvoices] = useState<Invoice[]>([]);
 
   const fetchInvoices = async () => {
     try {
@@ -9,7 +20,7 @@ export default function useFetchInvoices() {
       if (!response.ok) {
         throw new Error("Error Loading Invoices");
       }
-      const data = await response.json();
+      const data: Invoice[] = await response.json();
       const sortedInvoices = sortInvoices(data);
       setInvoices(sortedInvoices);
     } catch (error) {
@@ -21,8 +32,8 @@ export default function useFetchInvoices() {
     fetchInvoices();
   }, []);
 
-  const sortInvoices = (data) => {
-    data.sort((a, b) => new Date(b.invoiceDate) - new Date(a.invoiceDate));
+  const sortInvoices = (data: Invoice[]) => {
+    data.sort((a, b) => new Date(b.invoiceDate).getTime() - new Date(a.invoiceDate).getTime());
     return data;
   };
 
