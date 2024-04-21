@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { z } from "zod";
 import { useRouter } from "next/router";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 import Pdf from "@/components/invoicePDF/Pdf";
@@ -53,6 +52,12 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-gray-300 flex justify-center items-center p-6">
       <div className="w-full max-w-4xl bg-white rounded-lg shadow-lg p-8">
+        <div className="flex justify-center">
+          <img
+            className="w-40 "
+            src="https://static-media.fluxio.cloud/olisipoway/_icon/share-b2a65c5bedbb26af91c68cece307864c.png"
+          ></img>
+        </div>
         <div className="mb-8 flex justify-between">
           <h1 className="text-2xl font-bold text-gray-800">Gerar Fatura</h1>
           <button
@@ -63,7 +68,10 @@ export default function Home() {
           </button>
         </div>
         <form onSubmit={handleSubmit} className="space-y-6">
-          <CompanyInput formData={formData} onChange={handleInputChangeCompany} />
+          <CompanyInput
+            formData={formData}
+            onChange={handleInputChangeCompany}
+          />
           {formData.products.map((product, index) => (
             <ProductInput
               key={index}
