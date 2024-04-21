@@ -8,8 +8,7 @@ import { useFormSubmit } from "@/hooks/useFormSubmit";
 import ProductInput from "@/components/gerarFatura/ProductInput";
 import CompanyInput from "@/components/gerarFatura/CompanyInput";
 import { generateCurrentDate, generateInvoiceNumber } from "@/utils/utils";
-import { invoiceSchema } from '../types/zod'
-
+import { invoiceSchema } from "../types/zod";
 
 export default function Home() {
   const router = useRouter();
@@ -25,7 +24,13 @@ export default function Home() {
   const [invoiceDate, setInvoiceDate] = useState(generateCurrentDate());
   const { totalValue } = useCalculateTotalValue(formData);
 
-  const {handleSubmit,handleInputChange,handleProductChange,removeProductField,addProductField} = useFormSubmit(
+  const {
+    handleSubmit,
+    handleInputChange,
+    handleProductChange,
+    removeProductField,
+    addProductField,
+  } = useFormSubmit(
     formData,
     setFormData,
     invoiceSchema,
@@ -109,9 +114,11 @@ export default function Home() {
           </PDFDownloadLink>
         )}
         {validationError && (
-          <p className="text-red-500 text-center mt-4">Erro ao Validar Fatura.</p>
+          <p className="text-red-500 text-center mt-4">
+            Erro ao Validar Fatura.
+          </p>
         )}
       </div>
     </main>
-  )
+  );
 }

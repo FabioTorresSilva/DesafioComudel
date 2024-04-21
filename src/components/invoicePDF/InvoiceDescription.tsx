@@ -1,9 +1,14 @@
 import React from "react";
 import { Text, View, StyleSheet } from "@react-pdf/renderer";
+import { IFormData } from "@/types/type";
+
+interface InvoiceDescriptionProps {
+  formData: IFormData; 
+}
 
 const styles = StyleSheet.create({
   titleContainer: {
-    flexDirection: "column", // Change flexDirection to "column"
+    flexDirection: "column", 
     marginTop: 12,
   },
   reportTitle: {
@@ -22,7 +27,7 @@ const styles = StyleSheet.create({
   }
 });
 
-const InvoiceDescription = ({ formData }) => (
+const InvoiceDescription: React.FC<InvoiceDescriptionProps> = ({ formData }) => (
   <View style={styles.titleContainer}>
     <Text style={styles.descriptionTitle}>Descrição:</Text>
     <Text style={styles.description}>{formData.description}</Text>
