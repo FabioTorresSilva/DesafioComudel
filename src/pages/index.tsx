@@ -54,7 +54,7 @@ export default function Home() {
       <div className="w-full max-w-4xl bg-white rounded-lg shadow-lg p-8 shrink-0 ">
         <div className="flex justify-center">
           <img
-            className="w-40 "
+            className="w-52 md:w-60 "
             src="https://static-media.fluxio.cloud/olisipoway/_icon/share-b2a65c5bedbb26af91c68cece307864c.png"
           ></img>
         </div>
@@ -62,7 +62,7 @@ export default function Home() {
           <h1 className="text-2xl sm:text-3xl font-bold text-gray-800">Gerar Fatura</h1>
           <button
             onClick={handleViewHistory}
-            className="sm:px-4 px-2 sm:py-2 sm:text-xl text-sm  bg-blue-500 hover:bg-blue-700 text-white rounded-xl  transition duration-500 ease-in-out transform hover:-translate-y-1"
+            className="sm:px-4 px-2 py-2 sm:py-2 sm:text-xl text-sm  bg-blue-500 hover:bg-blue-700 text-white rounded-xl  transition duration-500 ease-in-out transform hover:-translate-y-1"
           >
             Histórico Faturas
           </button>
