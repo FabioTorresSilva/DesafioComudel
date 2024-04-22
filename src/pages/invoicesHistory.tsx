@@ -34,13 +34,13 @@ export default function Historico() {
   };
 
   return (
-    <main className={`min-h-screen bg-gray-300  p-6 justify-center  flex `}>
+    <main className={`min-h-screen bg-gray-300  p-2 sm-p-6 justify-center  flex `}>
       <div className="hidden sm:block sm:pr-14 pl-4 mt-6 pr-8">
         <div className="bg-white p-2 shadow-sm fixed cursor-pointer rounded-full text-xl sm:text-2xl font-bold flex justify-center align-middle items-center text-blue-700 ">
           <MdArrowBack onClick={handleBack} />
         </div>
       </div>
-      <div className="overflow-hidden flex-col justify-center shadow-xl w-full text-sm max-w-5xl h-full rounded-2xl bg-white mt-8 m-4 ">
+      <div className="overflow-hidden flex-col justify-center shadow-xl w-full text-sm sm:text-base max-w-5xl h-full rounded-2xl bg-white mt-8 m-4 ">
         <div className="flex bg-whiteBlueBackground rounded-t-2xl p-1 text-center">
           <div className="overflow-hidden border-whiteBlueBorder  p-2 w-2/5 ">Empresa</div>
           <div className=" overflow-hidden border-whiteBlueBorder border-x-2 p-2 w-1/4 ">

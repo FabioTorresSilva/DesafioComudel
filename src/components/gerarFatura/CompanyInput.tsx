@@ -9,7 +9,7 @@ const CompanyInput: React.FC<CompanyInputProps> = ({ formData, onChange }) => {
 
     return (
       <>
-        <div className="flex gap-4">
+        <div className="flex gap-4 sm:text-base text-sm">
           <div className="flex flex-col w-full min-w-40 ">
             Nome da Empresa
             <input

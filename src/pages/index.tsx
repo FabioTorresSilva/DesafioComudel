@@ -69,7 +69,7 @@ export default function Home() {
             Histórico Faturas
           </button>
         </div>
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} className="">
           <CompanyInput
             formData={formData}
             onChange={handleInputChangeCompany}
@@ -83,7 +83,7 @@ export default function Home() {
               onRemove={removeProductField}
             />
           ))}
-          <div className="flex justify-between items-center">
+          <div className="flex justify-between items-center py-4">
             <button
               type="button"
               onClick={addProductField}
@@ -96,7 +96,7 @@ export default function Home() {
             </span>
           </div>
           <textarea
-            className="w-full p-2 border border-gray-500 rounded"
+            className="w-full p-2 mb-4 border border-gray-500 rounded"
             rows={4}
             name="description"
             placeholder="Descrição da Fatura"

@@ -15,7 +15,7 @@ const ProductInput: React.FC<ProductInputProps> = ({
   };
 
   return (
-    <div className="flex flex-col gap-4 sm:flex-row w-full items-center">
+    <div className="flex flex-col gap-4 sm:flex-row w-full items-center sm:text-base text-sm">
       <div className="flex flex-col w-full ">
         Produto
         <input
