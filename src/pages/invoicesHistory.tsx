@@ -42,8 +42,8 @@ export default function Historico() {
       </div>
       <div className="flex-col justify-center shadow-xl w-full max-w-5xl h-full rounded-2xl bg-white mt-8 m-4 ">
         <div className="flex bg-whiteBlueBackground rounded-t-2xl p-1 text-center">
-          <div className="border-whiteBlueBorder  p-2 w-2/5 ">Empresa</div>
-          <div className=" border-whiteBlueBorder border-x-2 p-2 w-1/4 ">
+          <div className="overflow-hidden border-whiteBlueBorder  p-2 w-2/5 ">Empresa</div>
+          <div className=" overflow-hidden border-whiteBlueBorder border-x-2 p-2 w-1/4 ">
             Fatura Nº
           </div>
           <div className="hidden md:block border-whiteBlueBorder p-2 w-1/4">Total</div>
@@ -59,7 +59,7 @@ export default function Historico() {
             key={invoice._id}
             className=" flex border-whiteBlueBorder p-1 border last:rounded-b-2xl"
           >
-            <div className="border-whiteBlueBorder px-4  p-2 w-2/5   gap-2">
+            <div className="overflow-hidden border-whiteBlueBorder px-4  p-2 w-2/5   gap-2">
               <div className="text-blue-700 font-bold">{invoice.company} </div>{" "}
               <div className="text-gray-500">NIF: {invoice.vat}</div>
             </div>
