@@ -59,7 +59,9 @@ export default function Home() {
           ></img>
         </div>
         <div className="mb-8 flex gap-2  justify-between">
-          <h1 className="text-2xl sm:text-3xl font-bold text-gray-800">Gerar Fatura</h1>
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-800">
+            Gerar Fatura
+          </h1>
           <button
             onClick={handleViewHistory}
             className="sm:px-4 px-2 py-2 sm:py-2 sm:text-xl text-sm  bg-blue-500 hover:bg-blue-700 text-white rounded-xl  transition duration-500 ease-in-out transform hover:-translate-y-1"
@@ -128,7 +130,11 @@ export default function Home() {
         )}
         {validationError && (
           <p className="text-red-500 text-center mt-4">
-            Erro ao Validar Fatura.
+            {validationError[0].message === "Expected number, received nan" ? (
+              <div>Insira um número.</div>
+            ) : (
+              <div>{validationError[0].message}</div>
+            )}
           </p>
         )}
       </div>

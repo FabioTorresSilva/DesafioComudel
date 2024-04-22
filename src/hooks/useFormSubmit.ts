@@ -45,7 +45,7 @@ export const useFormSubmit = (
         console.error("Erro ao criar Fatura");
       }
     } catch (error : any) {
-      setValidationError(error.message);
+      setValidationError(error.errors);
       console.error("Formulário Inválido ou Erro na API");
     }
   };
@@ -76,7 +76,7 @@ export const useFormSubmit = (
   };
 
   const removeProductField = (index : any) => {
-    const updatedProducts = formData.products.filter((_ : undefined, i : number) => i !== index);
+    const updatedProducts = formData.products.filter((_ : any, i : number) => i !== index);
     setFormData({ ...formData, products: updatedProducts });
   };
 

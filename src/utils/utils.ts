@@ -9,3 +9,6 @@ export function generateInvoiceNumber() {
 export function generateCurrentDate() {
     return new Date().toISOString().split("T")[0]
 }
+
+
+  
