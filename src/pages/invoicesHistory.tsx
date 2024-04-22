@@ -40,7 +40,7 @@ export default function Historico() {
           <MdArrowBack onClick={handleBack} />
         </div>
       </div>
-      <div className="flex-col justify-center shadow-xl w-full max-w-5xl h-full rounded-2xl bg-white mt-8 m-4 ">
+      <div className="overflow-hidden flex-col justify-center shadow-xl w-full text-sm max-w-5xl h-full rounded-2xl bg-white mt-8 m-4 ">
         <div className="flex bg-whiteBlueBackground rounded-t-2xl p-1 text-center">
           <div className="overflow-hidden border-whiteBlueBorder  p-2 w-2/5 ">Empresa</div>
           <div className=" overflow-hidden border-whiteBlueBorder border-x-2 p-2 w-1/4 ">
@@ -61,7 +61,7 @@ export default function Historico() {
           >
             <div className="overflow-hidden border-whiteBlueBorder px-4  p-2 w-2/5   gap-2">
               <div className="text-blue-700 font-bold">{invoice.company} </div>{" "}
-              <div className="text-gray-500">NIF: {invoice.vat}</div>
+              <div className="hidden sm:block text-gray-500">NIF: {invoice.vat}</div>
             </div>
             <div className=" border-whiteBlueBorder overflow-hidden  sm:px-4 border-x-2 text-right p-2 w-1/4">
               {invoice.invoiceNumber}
@@ -69,14 +69,14 @@ export default function Historico() {
             <div className="border-whiteBlueBorder hidden md:block  p-2 w-1/4 text-right">
               {invoice.totalValue} €
             </div>
-            <div className="border-whiteBlueBorder md:w-1/12 w-20  md:border-l-2 p-2 px-5 text-center items-center justify-center ">
+            <div className="border-whiteBlueBorder  overflow-hidden md:w-1/12 w-20  md:border-l-2 p-2 px-5 text-center items-center justify-center ">
               <button onClick={() => handleViewInvoice(invoice)}>
                 <p className="text-blue-500 underline text-2xl pt-3">
                   <MdOutlinePreview />
                 </p>
               </button>
             </div>
-            <div className="border-whiteBlueBorder md:w-1/12 w-20 border-l-2 p-2 px-3  text-center items-center justify-center ">
+            <div className="border-whiteBlueBorder overflow-hidden md:w-1/12 w-20 border-l-2 p-2 px-3  text-center items-center justify-center ">
               <button onClick={() => handleDeleteInvoice(invoice)}>
                 <p className="underline text-red-500 text-2xl text-center align-midle  pt-3">
                   <MdDelete />
