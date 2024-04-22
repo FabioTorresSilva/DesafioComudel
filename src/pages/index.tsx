@@ -130,11 +130,7 @@ export default function Home() {
         )}
         {validationError && (
           <p className="text-red-500 text-center mt-4">
-            {validationError[0].message === "Expected number, received nan" ? (
-              <div>Insira um número.</div>
-            ) : (
-              <div>{validationError[0].message}</div>
-            )}
+          Erro ao Validar Fatura.
           </p>
         )}
       </div>

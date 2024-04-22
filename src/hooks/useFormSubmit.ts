@@ -45,7 +45,8 @@ export const useFormSubmit = (
         console.error("Erro ao criar Fatura");
       }
     } catch (error : any) {
-      setValidationError(error.errors);
+      console.log(((error.message)))
+      setValidationError((error).message);
       console.error("Formulário Inválido ou Erro na API");
     }
   };

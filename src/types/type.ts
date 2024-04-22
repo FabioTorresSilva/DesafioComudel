@@ -99,3 +99,7 @@ export interface Invoice {
   invoiceDate: string; 
 }
 
+export interface ErrorMessage {
+  message:string
+  type: string;
+} 
