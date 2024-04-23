@@ -1,40 +1,36 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Invoice Generator App
 
-## Getting Started
+This is a simple web application built with Next.js version 14 that allows users to generate invoices for their companies. It utilizes server components, server actions, and React Hook Forms with Zod for form validation.
+Features
 
-First, run the development server:
+    Create Invoice: Users can input details such as company name, VAT number, purchase value, and description to generate an invoice.
+    Generate PDF: Upon filling out the invoice details, users can click a button to generate a PDF version of the invoice.
+    View Invoices: Users can view a list of invoices previously generated.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Technologies Used
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+    Next.js 14
+    React
+    React Hook Forms
+    Zod
+    PDF generation library (e.g., PDFKit)
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+Getting Started
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+To run this project locally, follow these steps:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+    Clone this repository.
+    Install dependencies using npm install.
+    Run the development server using npm run dev.
+    Open http://localhost:3000 to view the app in your browser.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Usage
 
-## Learn More
+    Fill out the form with the required details (company name, VAT number, purchase value, and description).
+    Click on the "Generate Invoice" button to create the invoice.
+    To view a list of previously generated invoices, navigate to the "Invoices" section.
 
-To learn more about Next.js, take a look at the following resources:
+Screenshots
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Include screenshots of the app's interface to give users a visual representation of how it works.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
